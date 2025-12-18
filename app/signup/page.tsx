@@ -6,7 +6,7 @@ export default function SignupPage() {
             <div className='p-8 bg-white rounded-lg shadow-md w-96'>
                 <h1 className='text-3xl font-bold mb-3 text-center text-gray-900'>표영옥 갤러리</h1>
                 <h1 className='text-2xl font-bold mb-6 text-center text-gray-700'>회원가입</h1>
-                <form action={signup} className='space-y-4'>
+                <form action={signup as any} className='space-y-4'>
                     <div>
                         <label className='block mb-1 font-medium text-gray-700'>아이디</label>
                         <input
