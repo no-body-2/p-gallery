@@ -28,7 +28,7 @@ export default async function Home() {
                         <p className='text-gray-400'>첫 번째 글의 주인공이 되어보세요!</p>
                     </div>
                 ) : (
-                    posts.map((post) => (
+                    posts.map((post: any) => (
                         <Link href={`/post/${post.id}`} key={post.id} className='block group'>
                             <div className='bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition border border-gray-200 group-hover:border-blue-400'>
                                 <div className='flex justify-between items-start mb-2'>
