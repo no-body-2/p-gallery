@@ -56,7 +56,10 @@ export default async function Home() {
                                     <span className="flex items-center gap-1">
                                         🧑‍💻 {post.author.username}
                                     </span>
-                                    <span>{post.createdAt.toLocaleDateString()}</span>
+                                    {/*<span>{post.createdAt.toLocaleDateString()}</span>*/}
+                                    <span>
+                                        {new Date(post.createdAt).toISOString().split('T')[0]}
+                                    </span>
                                 </div>
                             </div>
                         </Link>

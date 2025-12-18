@@ -74,7 +74,8 @@ export default async function PostDetail({ params }: { params: Promise<{ id: str
 
                     <div className="flex justify-between text-sm text-gray-500 mb-8">
                         <span>작성자: {post.author.username}</span>
-                        <span>{post.createdAt.toLocaleDateString()}</span>
+                        {/*<span>{post.createdAt.toLocaleDateString()}</span>*/}
+                        <span>{new Date(post.createdAt).toISOString().split('T')[0]}</span>
                     </div>
                     <p className="text-gray-800 whitespace-pre-wrap leading-relaxed">
                         {post.content}
@@ -94,7 +95,10 @@ export default async function PostDetail({ params }: { params: Promise<{ id: str
                                 <div className="flex justify-between mb-1">
                                     <div className="flex items-center gap-2">
                                         <span className="font-bold text-sm text-blue-600">{comment.author.username}</span>
-                                        <span className="text-xs text-gray-400">{comment.createdAt.toLocaleDateString()}</span>
+                                        {/*<span className="text-xs text-gray-400">{comment.createdAt.toLocaleDateString()}</span>*/}
+                                        <span className="text-xs text-gray-400">
+        {new Date(comment.createdAt).toISOString().split('T')[0]}
+    </span>
                                     </div>
 
                                     {/* 내 댓글일 때만 삭제 버튼 표시 */}
