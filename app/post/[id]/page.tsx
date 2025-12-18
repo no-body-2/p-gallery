@@ -89,7 +89,7 @@ export default async function PostDetail({ params }: { params: Promise<{ id: str
 
                     {/* 댓글 목록 */}
                     <div className="space-y-4 mb-8">
-                        {post.comments.map((comment) => (
+                        {post.comments.map((comment: any) => (
                             <div key={comment.id} className="bg-white p-4 rounded shadow-sm">
                                 <div className="flex justify-between mb-1">
                                     <div className="flex items-center gap-2">
