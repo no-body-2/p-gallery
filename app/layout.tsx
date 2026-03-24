@@ -7,7 +7,7 @@ import Navbar from "@/components/Navbar"; // 👈 Navbar 가져오기
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "표영옥 갤러리",
+    title: "씹석이 갤러리",
     description: "박제 환영",
 };
 
