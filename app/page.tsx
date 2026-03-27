@@ -1,12 +1,9 @@
 // app/page.tsx
 import Link from 'next/link';
 import prisma from '@/lib/prisma';
-import Image from 'next/image';
-// auth, signOut import 제거 (Navbar로 갔음)
+// Image import 제거 (순수 img 태그를 쓰므로 필요 없음)
 
 export default async function Home() {
-    // session 가져오는 코드도 제거 (여기선 안 씀)
-
     // 작성된 글 목록 가져오기
     const posts = await prisma.post.findMany({
         orderBy: { createdAt: 'desc' },
@@ -20,8 +17,6 @@ export default async function Home() {
 
     return (
         <div className='min-h-screen p-4 sm:p-8 bg-gray-100'>
-            {/* <header> 태그 전체 삭제됨 (Navbar가 대신함) */}
-
             <main className='grid gap-4'>
                 {posts.length === 0 ? (
                     <div className="text-center py-20">
@@ -59,18 +54,17 @@ export default async function Home() {
                                     <div className="flex items-center gap-2">
                                         <div className="relative w-6 h-6 shrink-0 overflow-hidden rounded-full bg-gray-200 border border-gray-300">
                                             {post.author.imageUrl ? (
+                                                    {/* 👇 여기 에러나던 속성들을 싹 날리고 w-full h-full을 추가했습니다 */}
                                                 <img
                                                     src={post.author.imageUrl}
                                                     alt={`${post.author.username}의 프로필`}
-                                                    fill
-                                                    className="object-cover"
-                                                    sizes="24px"
+                                                    className="w-full h-full object-cover"
                                                 />
-                                            ) : (
+                                                ) : (
                                                 <svg className="w-full h-full text-gray-400 mt-1" fill="currentColor" viewBox="0 0 24 24">
-                                                    <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                                                <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
                                                 </svg>
-                                            )}
+                                                )}
                                         </div>
                                         <span className="font-medium text-gray-700">{post.author.username}</span>
                                     </div>
