@@ -29,7 +29,7 @@ export async function updateProfileImage(formData: FormData) {
 
     // 4. DB에서 현재 유저 찾기
     const user = await prisma.user.findUnique({
-        where: { name: session.user.name },
+        where: { username: session.user.name },
     });
 
     if (!user) return;
