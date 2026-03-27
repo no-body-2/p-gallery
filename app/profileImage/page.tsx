@@ -10,13 +10,13 @@ export default async function ProfileEditPage() {
     const session = await auth();
 
     // 1. 로그인 안 된 사용자는 메인으로 튕겨냄 (보안)
-    if (!session?.user?.username) {
+    if (!session?.user?.name) {
         redirect('/');
     }
 
     // 2. DB에서 현재 유저 정보 가져오기 (기존 프로필 사진 확인용)
     const user = await prisma.user.findUnique({
-        where: { username: session.user.username },
+        where: { username: session.user.name },
     });
 
     if (!user) redirect('/');
