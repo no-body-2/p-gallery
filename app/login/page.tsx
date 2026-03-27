@@ -6,7 +6,7 @@ export default function LoginPage() {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
             <div className="p-8 bg-white rounded-lg shadow-md w-96">
-                <h1 className='text-3xl font-bold mb-3 text-center text-gray-900'>표영옥 갤러리</h1>
+                <h1 className='text-3xl font-bold mb-3 text-center text-gray-900'>ㅈㅇㅎ 갤러리</h1>
                 <h1 className="text-2xl font-bold mb-6 text-center text-gray-700">로그인</h1>
 
                 <form

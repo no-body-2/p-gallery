@@ -10,7 +10,7 @@ export default async function Navbar() {
             <div className="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
                 {/* 로고 (클릭하면 메인으로) */}
                 <Link href="/" className="text-2xl font-bold text-gray-900 hover:text-blue-600 transition">
-                    씹석이 갤러리 🖼️
+                    ㅈㅇㅎ 갤러리 🖼️
                 </Link>
 
                 <div>
