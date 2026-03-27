@@ -59,7 +59,7 @@ export default async function Home() {
                                     <div className="flex items-center gap-2">
                                         <div className="relative w-6 h-6 shrink-0 overflow-hidden rounded-full bg-gray-200 border border-gray-300">
                                             {post.author.imageUrl ? (
-                                                <Image
+                                                <img
                                                     src={post.author.imageUrl}
                                                     alt={`${post.author.username}의 프로필`}
                                                     fill

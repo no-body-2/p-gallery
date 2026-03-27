@@ -4,7 +4,7 @@ import { auth } from "@/auth"
 import { createComment } from "./actions"
 import { notFound } from "next/navigation"
 import Link from "next/link" // 👈 1. Link 컴포넌트 추가
-import Image from "next/image"
+import img from "next/image"
 
 // 삭제 버튼 컴포넌트 가져오기
 import PostDeleteButton from "@/components/PostDeleteButton"
@@ -78,7 +78,7 @@ export default async function PostDetail({ params }: { params: Promise<{ id: str
                         <div className="flex items-center gap-2">
                             <div className="relative w-8 h-8 shrink-0 overflow-hidden rounded-full bg-gray-200 border border-gray-300">
                                 {post.author.imageUrl ? ( // 👈 DB의 imageUrl 값을 확인합니다.
-                                    <Image
+                                    <img
                                         src={post.author.imageUrl}
                                         alt={`${post.author.username}의 프로필`}
                                         fill
@@ -121,7 +121,7 @@ export default async function PostDetail({ params }: { params: Promise<{ id: str
                                         {/* 프로필 이미지 컨테이너 */}
                                         <div className="relative w-8 h-8 shrink-0 overflow-hidden rounded-full bg-gray-100 border border-gray-200">
                                             {comment.author.imageUrl ? (
-                                                <Image
+                                                <img
                                                     src={comment.author.imageUrl}
                                                     alt={`${comment.author.username}의 프로필`}
                                                     fill
