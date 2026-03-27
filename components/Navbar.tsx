@@ -25,7 +25,8 @@ export default async function Navbar() {
                                 title="프로필 수정하기"
                             >
                                 {/* 프로필 이미지 컨테이너 (마우스 올리면 테두리 생김) */}
-                                <div className="relative w-8 h-8 shrink-0 overflow-hidden rounded-full bg-gray-200 border border-gray-300 group-hover:ring-2 group-hover:ring-blue-400 transition">
+                                <div
+                                    className="relative w-8 h-8 shrink-0 overflow-hidden rounded-full bg-gray-200 border border-gray-300 group-hover:ring-2 group-hover:ring-blue-400 transition">
                                     {session.user?.image ? (
                                         <Image
                                             src={session.user.image}
@@ -41,11 +42,13 @@ export default async function Navbar() {
                                             fill="currentColor"
                                             viewBox="0 0 24 24"
                                         >
-                                            <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                                            <path
+                                                d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"/>
                                         </svg>
                                     )}
                                 </div>
-                                <span className="font-bold text-blue-800 hidden sm:block group-hover:text-blue-600 transition">
+                                <span
+                                    className="font-bold text-blue-800 hidden sm:block group-hover:text-blue-600 transition">
                                     {session.user?.name} 님
                                 </span>
                             </Link>
@@ -63,7 +66,8 @@ export default async function Navbar() {
                                     await signOut()
                                 }}
                             >
-                                <button className="bg-red-400 text-white px-4 py-2 rounded hover:bg-red-500 font-bold text-sm transition">
+                                <button
+                                    className="bg-red-400 text-white px-4 py-2 rounded hover:bg-red-500 font-bold text-sm transition">
                                     로그아웃
                                 </button>
                             </form>
@@ -88,3 +92,4 @@ export default async function Navbar() {
             </div>
         </nav>
     )
+}
