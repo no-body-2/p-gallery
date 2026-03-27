@@ -3,6 +3,7 @@
 import { put } from '@vercel/blob';
 import prisma from '@/lib/prisma';
 import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation'; // 👈 리다이렉트 추가
 
 export async function updateProfileImage(formData: FormData) {
     try {
@@ -10,7 +11,6 @@ export async function updateProfileImage(formData: FormData) {
         const userIdString = formData.get('userId') as string;
         const file = formData.get('image') as File;
 
-        // 👇 핵심 해결 부분: 문자열을 숫자로 변환합니다.
         const userId = parseInt(userIdString, 10);
 
         // 방어 로직: 변환된 숫자가 유효하지 않거나 파일이 없는 경우
@@ -28,22 +28,24 @@ export async function updateProfileImage(formData: FormData) {
         });
 
         // 3. Prisma를 이용해 DB의 imageUrl 컬럼 갱신
-        const updatedUser = await prisma.user.update({
+        await prisma.user.update({
             where: {
-                id: userId, // 👈 이제 완벽한 숫자(number) 타입이 들어갑니다.
+                id: userId,
             },
             data: {
                 imageUrl: blob.url,
             },
         });
 
-        // 4. 캐시 무효화
-        revalidatePath('/');
-
-        return { success: true, imageUrl: blob.url };
+        // 🚨 기존에 있던 return { success: true ... } 삭제됨 🚨
 
     } catch (error) {
         console.error("Profile Image Update Error:", error);
-        return { success: false, error: "프로필 이미지 업데이트에 실패했습니다." };
+        // 에러가 발생하면 콘솔에만 찍고 조용히 함수를 종료합니다. (void 반환)
+        return;
     }
+
+    // 4. 캐시 무효화 및 리다이렉트 (반드시 try-catch 블록 바깥에 위치해야 함!)
+    revalidatePath('/');
+    redirect('/');
 }
