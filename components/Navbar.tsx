@@ -28,7 +28,7 @@ export default async function Navbar() {
                                 <div
                                     className="relative w-8 h-8 shrink-0 overflow-hidden rounded-full bg-gray-200 border border-gray-300 group-hover:ring-2 group-hover:ring-blue-400 transition">
                                     {session.user?.imageUrl ? (
-                                            {/* 👇 fill과 sizes를 지우고 w-full h-full을 추가했습니다 */}
+
                                         <img
                                             src={session.user.imageUrl}
                                             alt={`${session.user?.name || "사용자"}의 프로필`}

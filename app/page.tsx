@@ -54,7 +54,7 @@ export default async function Home() {
                                     <div className="flex items-center gap-2">
                                         <div className="relative w-6 h-6 shrink-0 overflow-hidden rounded-full bg-gray-200 border border-gray-300">
                                             {post.author.imageUrl ? (
-                                                    {/* 👇 여기 에러나던 속성들을 싹 날리고 w-full h-full을 추가했습니다 */}
+
                                                 <img
                                                     src={post.author.imageUrl}
                                                     alt={`${post.author.username}의 프로필`}
