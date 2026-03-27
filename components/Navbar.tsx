@@ -27,10 +27,10 @@ export default async function Navbar() {
                                 {/* 프로필 이미지 컨테이너 (마우스 올리면 테두리 생김) */}
                                 <div
                                     className="relative w-8 h-8 shrink-0 overflow-hidden rounded-full bg-gray-200 border border-gray-300 group-hover:ring-2 group-hover:ring-blue-400 transition">
-                                    {session.user?.image ? (
+                                    {session.user?.imageUrl ? (
                                             {/* 👇 fill과 sizes를 지우고 w-full h-full을 추가했습니다 */}
                                         <img
-                                            src={session.user.image}
+                                            src={session.user.imageUrl}
                                             alt={`${session.user?.name || "사용자"}의 프로필`}
                                             className="w-full h-full object-cover"
                                         />
