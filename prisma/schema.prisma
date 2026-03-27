@@ -16,6 +16,7 @@ model User {
   password  String
   role      String   @default("USER")
   createdAt DateTime @default(now())
+  imageUrl  String
 
   posts    Post[]
   comments Comment[]

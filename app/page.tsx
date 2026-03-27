@@ -36,8 +36,8 @@ export default async function Home() {
                                         {post.title}
                                     </h2>
                                     <span className={`text-sm flex items-center gap-1 ${post._count.comments > 0 ? 'text-blue-600 font-bold' : 'text-gray-400'}`}>
-                                        💬 {post._count.comments}
-                                    </span>
+                            💬 {post._count.comments}
+                        </span>
                                 </div>
 
                                 <p className='text-gray-600 mb-4 line-clamp-2 h-12'>{post.content}</p>
@@ -52,14 +52,32 @@ export default async function Home() {
                                     </div>
                                 )}
 
-                                <div className='text-sm text-gray-500 flex justify-between border-t pt-4 mt-2'>
-                                    <span className="flex items-center gap-1">
-                                        🧑‍💻 {post.author.username}
-                                    </span>
-                                    {/*<span>{post.createdAt.toLocaleDateString()}</span>*/}
+                                {/* 👇 프로필 이미지가 적용된 하단 영역 */}
+                                <div className='text-sm text-gray-500 flex justify-between items-center border-t pt-4 mt-2'>
+                                    {/* 🧑‍💼 프로필 이미지 + 작성자 이름 */}
+                                    <div className="flex items-center gap-2">
+                                        <div className="relative w-6 h-6 shrink-0 overflow-hidden rounded-full bg-gray-200 border border-gray-300">
+                                            {post.author.imageUrl ? (
+                                                <Image
+                                                    src={post.author.imageUrl}
+                                                    alt={`${post.author.username}의 프로필`}
+                                                    fill
+                                                    className="object-cover"
+                                                    sizes="24px"
+                                                />
+                                            ) : (
+                                                <svg className="w-full h-full text-gray-400 mt-1" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                                                </svg>
+                                            )}
+                                        </div>
+                                        <span className="font-medium text-gray-700">{post.author.username}</span>
+                                    </div>
+
+                                    {/* 📅 작성일 */}
                                     <span>
-                                        {new Date(post.createdAt).toISOString().split('T')[0]}
-                                    </span>
+                            {new Date(post.createdAt).toISOString().split('T')[0]}
+                        </span>
                                 </div>
                             </div>
                         </Link>

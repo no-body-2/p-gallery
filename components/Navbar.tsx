@@ -1,5 +1,6 @@
 // components/Navbar.tsx
 import Link from "next/link"
+import Image from "next/image" // 👈 1. Image 임포트 추가
 import { auth, signOut } from "@/auth"
 
 export default async function Navbar() {
@@ -16,9 +17,38 @@ export default async function Navbar() {
                 <div>
                     {session ? (
                         <div className="flex items-center gap-4">
-              <span className="font-bold text-blue-800 hidden sm:block">
-                {session.user?.name} 님
-              </span>
+
+                            {/* 👇 2. 프로필 영역 전체를 Link로 감싸서 클릭 가능하게 만듭니다 */}
+                            <Link
+                                href="/profile/edit"
+                                className="flex items-center gap-2 group cursor-pointer"
+                                title="프로필 수정하기"
+                            >
+                                {/* 프로필 이미지 컨테이너 (마우스 올리면 테두리 생김) */}
+                                <div className="relative w-8 h-8 shrink-0 overflow-hidden rounded-full bg-gray-200 border border-gray-300 group-hover:ring-2 group-hover:ring-blue-400 transition">
+                                    {session.user?.image ? (
+                                        <Image
+                                            src={session.user.image}
+                                            alt={`${session.user?.name || "사용자"}의 프로필`}
+                                            fill
+                                            className="object-cover"
+                                            sizes="32px"
+                                        />
+                                    ) : (
+                                        // 이미지가 없을 때 보여줄 기본 실루엣 아이콘 (SVG)
+                                        <svg
+                                            className="w-full h-full text-gray-400 mt-1"
+                                            fill="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                                        </svg>
+                                    )}
+                                </div>
+                                <span className="font-bold text-blue-800 hidden sm:block group-hover:text-blue-600 transition">
+                                    {session.user?.name} 님
+                                </span>
+                            </Link>
 
                             <Link
                                 href="/write"
@@ -58,4 +88,3 @@ export default async function Navbar() {
             </div>
         </nav>
     )
-}
