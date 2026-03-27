@@ -1,6 +1,7 @@
 // app/page.tsx
 import Link from 'next/link';
 import prisma from '@/lib/prisma';
+import Image from 'next/image';
 // auth, signOut import 제거 (Navbar로 갔음)
 
 export default async function Home() {
