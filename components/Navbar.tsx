@@ -20,7 +20,7 @@ export default async function Navbar() {
 
                             {/* 👇 2. 프로필 영역 전체를 Link로 감싸서 클릭 가능하게 만듭니다 */}
                             <Link
-                                href="/profile/edit"
+                                href="/profileImage"
                                 className="flex items-center gap-2 group cursor-pointer"
                                 title="프로필 수정하기"
                             >
